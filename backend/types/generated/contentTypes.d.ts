@@ -590,6 +590,70 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
+export interface PluginAllInOneAccessibilitySettings
+  extends Schema.CollectionType {
+  collectionName: 'setting';
+  info: {
+    singularName: 'settings';
+    pluralName: 'setting';
+    displayName: 'Settings';
+  };
+  options: {
+    draftAndPublish: false;
+    comment: '';
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    License_Key: Attribute.String & Attribute.Required;
+    Icon_Position: Attribute.Enumeration<
+      [
+        'top_left',
+        'top_center',
+        'top_right',
+        'middle_left',
+        'middle_right',
+        'bottom_left',
+        'bottom_center',
+        'bottom_right'
+      ]
+    >;
+    Icon_Type: Attribute.Enumeration<
+      ['aioa-icon-type-1', 'aioa-icon-type-2', 'aioa-icon-type-3']
+    >;
+    Icon_Size: Attribute.Enumeration<
+      [
+        'aioa-big-icon',
+        'aioa-medium-icon',
+        'aioa-default-icon',
+        'aioa-small-icon',
+        'aioa-extra-small-icon'
+      ]
+    >;
+    Color_Code: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::all-in-one-accessibility.settings',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::all-in-one-accessibility.settings',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginI18NLocale extends Schema.CollectionType {
   collectionName: 'i18n_locale';
   info: {
@@ -807,7 +871,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
         maxLength: 256;
       }>;
     slug: Attribute.UID<'api::article.article', 'title'>;
-    cover: Attribute.Media;
+    cover: Attribute.Media<'images' | 'files' | 'videos'>;
     category: Attribute.Relation<
       'api::article.article',
       'manyToOne',
@@ -859,7 +923,7 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    avatar: Attribute.Media;
+    avatar: Attribute.Media<'images' | 'files' | 'videos'>;
     email: Attribute.String;
     articles: Attribute.Relation<
       'api::author.author',
@@ -946,7 +1010,7 @@ export interface ApiGlobalGlobal extends Schema.SingleType {
           localized: true;
         };
       }>;
-    favicon: Attribute.Media &
+    favicon: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1158,6 +1222,7 @@ declare module '@strapi/types' {
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::all-in-one-accessibility.settings': PluginAllInOneAccessibilitySettings;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;

@@ -1,5 +1,6 @@
 node_modules
 readme-images
 .vscode
+.idea
 .DS_Store
 **/.yarn
