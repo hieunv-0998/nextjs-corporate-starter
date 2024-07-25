@@ -1017,6 +1017,8 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'api::author.author'
     >;
     seo: Attribute.Component<'shared.seo'>;
+    openMap: Attribute.JSON &
+      Attribute.CustomField<'plugin::open-street-maps.location-picker'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

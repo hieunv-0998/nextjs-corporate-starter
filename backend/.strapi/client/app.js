@@ -4,6 +4,7 @@
  */
 import googleMaps from "@amicaldo/strapi-google-maps/strapi-admin";
 import ckeditor from "@ckeditor/strapi-plugin-ckeditor/strapi-admin";
+import openStreetMaps from "@isneezy/strapi-open-street-maps/strapi-admin";
 import calendar from "@offset-dev/strapi-calendar/strapi-admin";
 import strapiCloud from "@strapi/plugin-cloud/strapi-admin";
 import graphql from "@strapi/plugin-graphql/strapi-admin";
@@ -19,6 +20,7 @@ renderAdmin(document.getElementById("strapi"), {
   plugins: {
     "google-maps": googleMaps,
     ckeditor: ckeditor,
+    "open-street-maps": openStreetMaps,
     calendar: calendar,
     "strapi-cloud": strapiCloud,
     graphql: graphql,

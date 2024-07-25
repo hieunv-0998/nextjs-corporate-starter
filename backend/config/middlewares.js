@@ -41,6 +41,7 @@ module.exports = [
             'khms3.googleapis.com',
             'streetviewpixels-pa.googleapis.com',
             'market-assets.strapi.io',
+            'https://tile.openstreetmap.org',
           ],
         },
       },
