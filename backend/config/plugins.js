@@ -8,4 +8,13 @@ module.exports = ({ env }) => ({
     config: {
     },
   },
+  scheduler: {
+    enabled: true,
+    config: {
+      contentTypes: {
+        'api::article.article': {},
+        'api::page.page': {}
+      }
+    }
+  },
 });
