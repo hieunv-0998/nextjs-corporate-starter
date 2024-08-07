@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 
+require('dotenv').config();
+
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -15,7 +17,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: '*.media.strapiapp.com',
+        hostname: process.env.NEXT_PUBLIC_STRAPI_MEDIA_URL || '*.media.strapiapp.com',
       },
     ],
   },
