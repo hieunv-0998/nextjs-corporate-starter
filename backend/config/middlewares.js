@@ -42,6 +42,7 @@ module.exports = [
             'streetviewpixels-pa.googleapis.com',
             'market-assets.strapi.io',
             'https://tile.openstreetmap.org',
+            '*.media.strapiapp.com',
           ],
         },
       },
