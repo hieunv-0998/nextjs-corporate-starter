@@ -15,7 +15,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'brilliant-kindness-87cd073035.media.strapiapp.com',
+        hostname: '*.media.strapiapp.com',
       },
     ],
   },
